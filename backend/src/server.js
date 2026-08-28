@@ -11,6 +11,11 @@ const healthRouter = require("./routes/health");
 const authRouter = require("./routes/auth");
 const resumesRouter = require("./routes/resumes");
 
+const versionsRouter = require("./routes/versions");
+const historyRouter = require("./routes/history");
+const dashboardRouter = require("./routes/dashboard");
+const insightsRouter = require("./routes/insights");
+
 const app = express();
 
 app.set("trust proxy", 1);
@@ -31,6 +36,11 @@ if (!env.isProd) app.use(morgan("dev"));
 app.use("/api/health", healthRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/resumes", resumesRouter);
+
+app.use("/api/versions", versionsRouter);
+app.use("/api/history", historyRouter);
+app.use("/api/dashboard", dashboardRouter);
+app.use("/api/insights", insightsRouter);
 
 app.use(notFound);
 app.use(errorHandler);
